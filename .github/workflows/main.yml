@@ -1,0 +1,18 @@
+name: Python CI/CD #specifying the type
+
+on: [push] #puts it in the file i created before
+
+jobs: #build the python file
+  build:
+    runs-on: ubuntu-latest #operating system could be macOS/windows
+    steps:
+      - name: Checkout code #read "clone" the repo 
+        uses: actions/checkout@v3 #built in actions/creating the script of the action [checkout is built in]
+      - name: Set up Python #install python package and set it up to use it in this package
+        uses: actions/setup-python@v3 #built in action
+        with: #the version of python
+          python-version: '3.x' #any version above 3
+      - name: Run Python script #run the script 
+        run: python hello.py #give it any name i need
+        #it will give an error if the file is not already in my repo
+        #should run a file from my repo
